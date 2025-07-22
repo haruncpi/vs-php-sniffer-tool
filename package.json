@@ -1,0 +1,125 @@
+{
+    "name": "php-sniffer-tool",
+    "displayName": "PHP Sniffer Tool",
+    "description": "Uses PHP_CodeSniffer to format and lint PHP code.",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.29.0"
+    },
+    "publisher": "haruncox",
+    "license": "MIT",
+    "categories": [
+        "Formatters",
+        "Linters"
+    ],
+    "keywords": [
+        "php",
+        "phpcs",
+        "phpcbf"
+    ],
+    "contributors": [
+        {
+            "name": "Md.Harun-Ur-Rashid",
+            "email": "harun.cox@gmail.com"
+        }
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "PHP Sniffer Tool",
+            "properties": {
+                "phpSniffer.run": {
+                    "type": "string",
+                    "default": "onSave",
+                    "enum": [
+                        "onSave",
+                        "onType",
+                        "never"
+                    ],
+                    "markdownEnumDescriptions": [
+                        "Run `phpcs` on save.",
+                        "Run `phpcs` after typing after `<onTypeDelay>`milliseconds.",
+                        "Don't run `phpcs` ever."
+                    ],
+                    "markdownDescription": "When to run `phpcs`."
+                },
+                "phpSniffer.onTypeDelay": {
+                    "type": "number",
+                    "default": 250,
+                    "minimum": 0,
+                    "markdownDescription": "When `#phpSniffer.run#` is `onType`, this sets the amount of milliseconds the validator will wait after typing has stopped before it will run."
+                },
+                "phpSniffer.extraFiles": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "default": [],
+                    "markdownDescription": "[Glob patterns](https://code.visualstudio.com/api/references/vscode-api#GlobPattern) of extra files to match that this extension should run on. Useful for standards that don't just validate PHP files.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "phpSniffer.executablesFolder": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "Use this to specify a different executables folder if it is not in your global `PATH`, such as when using `PHP_Codesniffer` as a project-scoped dependency. Can be absolute, or relative to the workspace folder."
+                },
+                "phpSniffer.autoDetect": {
+                    "scope": "resource",
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Set to `true` for the extension to auto-detect `phpSniffer.executablesFolder` as `./vendor/bin/` per workspace folder (applies only if `phpSniffer.executablesFolder` is empty)."
+                },
+                "phpSniffer.standard": {
+                    "scope": "resource",
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "The standards to check against. This is passed to the `phpcbf` and `phpcs` executables as the value for `--standard`. Can be absolute, or relative to the workspace folder. If not set, [PHP_CodeSniffer will attempt to find a file to use](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file)."
+                },
+                "phpSniffer.snippetExcludeSniffs": {
+                    "scope": "resource",
+                    "type": "array",
+                    "default": [],
+                    "markdownDescription": "Sniffs to exclude when formatting a code snippet (such as when _formatting on paste_ or on the command `format on selection`). This is passed to the `phpcbf` command as the value for `--exclude` when **not** formatting a whole file."
+                },
+                "phpSniffer.disableWhenDebugging": {
+                    "scope": "machine",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Disable sniffing when any debug session is active."
+                }
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/haruncpi/vs-php-sniffer-tool"
+    },
+    "scripts": {
+        "lint": "eslint --ignore-path .gitignore . && tsc",
+        "test:unit": "mocha \"./test/unit/*.test.js\"",
+        "test:integration": "node ./test/run.js",
+        "version": "node ./scripts/changelog && git add CHANGELOG.md"
+    },
+    "devDependencies": {
+        "@types/lodash.debounce": "^4.0.6",
+        "@types/node": "^10.14.9",
+        "@types/vscode": "^1.29.0",
+        "eslint": "^6.6.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-plugin-import": "^2.18.2",
+        "fs-extra": "^7.0.1",
+        "get-stdin": "^7.0.0",
+        "glob": "^7.1.6",
+        "mocha": "^7.1.2",
+        "typescript": "^3.7.3",
+        "vscode-test": "^1.2.3"
+    },
+    "dependencies": {
+        "lodash.debounce": "^4.0.8"
+    }
+}

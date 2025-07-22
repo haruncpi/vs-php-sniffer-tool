@@ -1,0 +1,13 @@
+.github/**
+.vscode/**
+.vscode-test/**
+.editorconfig
+.eslintrc.js
+.gitattributes
+.gitignore
+.mocharc.js
+.nvmrc
+.travis.yml
+scripts/**
+test/**
+tsconfig.json
