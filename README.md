@@ -1,5 +1,5 @@
 # PHP Sniffer
-VSCode extension for PHP Sniffer. Extension Link: [PHP Sniffer](https://marketplace.visualstudio.com/items?itemName=wongjn.php-sniffer)
+VSCode extension for PHP Sniffer. Extension Link: [PHP Sniffer](https://marketplace.visualstudio.com/items?itemName=haruncox.php-sniffer-tool)
 
 ## Features
 
@@ -12,7 +12,7 @@ VSCode extension for PHP Sniffer. Extension Link: [PHP Sniffer](https://marketpl
     ```json
     {
       "[php]": {
-        "editor.defaultFormatter": "wongjn.php-sniffer"
+        "editor.defaultFormatter": "haruncox.php-sniffer-tool"
       }
     }
     ```
