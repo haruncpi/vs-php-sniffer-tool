@@ -7,6 +7,7 @@
         "vscode": "^1.29.0"
     },
     "publisher": "haruncox",
+    "icon": "images/logo.png",
     "license": "MIT",
     "categories": [
         "Formatters",
