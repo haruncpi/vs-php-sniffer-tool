@@ -2,7 +2,7 @@
     "name": "php-sniffer-tool",
     "displayName": "PHP Sniffer Tool",
     "description": "Uses PHP_CodeSniffer to format and lint PHP code.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "engines": {
         "vscode": "^1.29.0"
     },
@@ -95,10 +95,6 @@
                 }
             }
         }
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/haruncpi/vs-php-sniffer-tool"
     },
     "scripts": {
         "lint": "eslint --ignore-path .gitignore . && tsc",
